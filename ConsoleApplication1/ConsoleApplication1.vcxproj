@@ -139,7 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Chat.cpp" />
     <ClCompile Include="ConsoleApplication1.cpp" />
+    <ClCompile Include="ConsoleControl.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Chat.h" />
+    <ClInclude Include="ConsoleControl.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
