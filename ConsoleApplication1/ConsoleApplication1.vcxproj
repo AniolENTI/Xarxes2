@@ -140,12 +140,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Chat.cpp" />
+    <ClCompile Include="ConnectionAbstraction\SocketManager.cpp" />
+    <ClCompile Include="ConnectionAbstraction\SocketSelector.cpp" />
+    <ClCompile Include="ConnectionAbstraction\TcpListener.cpp" />
+    <ClCompile Include="ConnectionAbstraction\TcpSocket.cpp" />
     <ClCompile Include="ConsoleApplication1.cpp" />
     <ClCompile Include="ConsoleControl.cpp" />
+    <ClCompile Include="ConnectionAbstraction\Packet.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Chat.h" />
+    <ClInclude Include="ConnectionAbstraction\SocketManager.h" />
+    <ClInclude Include="ConnectionAbstraction\SocketSelector.h" />
+    <ClInclude Include="ConnectionAbstraction\TcpListener.h" />
+    <ClInclude Include="ConnectionAbstraction\TcpSocket.h" />
     <ClInclude Include="ConsoleControl.h" />
+    <ClInclude Include="ConnectionAbstraction\Packet.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
