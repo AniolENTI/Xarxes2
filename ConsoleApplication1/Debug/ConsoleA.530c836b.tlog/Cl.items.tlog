@@ -1,3 +1,8 @@
 C:\Users\AniolMoratoGil\Desktop\Xarxes2\ConsoleApplication1\Chat.cpp;C:\Users\AniolMoratoGil\Desktop\Xarxes2\ConsoleApplication1\Debug\Chat.obj
+C:\Users\AniolMoratoGil\Desktop\Xarxes2\ConsoleApplication1\ConnectionAbstraction\SocketManager.cpp;C:\Users\AniolMoratoGil\Desktop\Xarxes2\ConsoleApplication1\Debug\SocketManager.obj
+C:\Users\AniolMoratoGil\Desktop\Xarxes2\ConsoleApplication1\ConnectionAbstraction\SocketSelector.cpp;C:\Users\AniolMoratoGil\Desktop\Xarxes2\ConsoleApplication1\Debug\SocketSelector.obj
+C:\Users\AniolMoratoGil\Desktop\Xarxes2\ConsoleApplication1\ConnectionAbstraction\TcpListener.cpp;C:\Users\AniolMoratoGil\Desktop\Xarxes2\ConsoleApplication1\Debug\TcpListener.obj
+C:\Users\AniolMoratoGil\Desktop\Xarxes2\ConsoleApplication1\ConnectionAbstraction\TcpSocket.cpp;C:\Users\AniolMoratoGil\Desktop\Xarxes2\ConsoleApplication1\Debug\TcpSocket.obj
 C:\Users\AniolMoratoGil\Desktop\Xarxes2\ConsoleApplication1\ConsoleApplication1.cpp;C:\Users\AniolMoratoGil\Desktop\Xarxes2\ConsoleApplication1\Debug\ConsoleApplication1.obj
 C:\Users\AniolMoratoGil\Desktop\Xarxes2\ConsoleApplication1\ConsoleControl.cpp;C:\Users\AniolMoratoGil\Desktop\Xarxes2\ConsoleApplication1\Debug\ConsoleControl.obj
+C:\Users\AniolMoratoGil\Desktop\Xarxes2\ConsoleApplication1\ConnectionAbstraction\Packet.cpp;C:\Users\AniolMoratoGil\Desktop\Xarxes2\ConsoleApplication1\Debug\Packet.obj
