@@ -6,12 +6,16 @@
 
 #include "ConsoleControl.h"
 #include "Chat.h"
+#include "ConnectionAbstraction/SocketManager.h"
+#include "WindowsHelper/Window.h"
 
 void RunClient();
 void RunServer();
 void RunWindows();
 
 unsigned short port = 3000;
+
+enum PackagesIds: Packet::PacketKey { Message = 0 };
 
 int main()
 {
@@ -61,37 +65,85 @@ void RunClient()
 	std::string ip;
 	std::getline(std::cin, ip);
 
-	Chat* chat = Chat::Client(ip, port);
+	//Chat* chat = Chat::Client(ip, port);
+
+	SocketManager* SM = new SocketManager([](TcpSocket* socket)
+		{
+			std::cout << std::endl << "Socket connected" << socket->getRemoteAddress().toString();
+
+			socket->Subscribe(Message, [socket](Packet packet)
+				{
+					std::string message;
+					packet >> message;
+					std::cout << std::endl << "New Message: " << message;
+
+				});
+
+			socket->SubscribeOnDisconnect([](TcpSocket* socket)
+				{
+					std::cout << std::endl << "Socket Disconnected" << socket->getRemoteAddress().toString();
+				});
+
+			std::string message = "Soc el client";
+			Packet packet;
+			packet << message;
+
+			socket->Send(Message, packet);
+		});
+
+	if (SM->ConnectToServer(ip, port))
+	{
+		SM->StartLoop();
+	}
 }
 
 void RunServer() 
 {
 	std::cout << "Server";
 
-	Chat* chat = Chat::Server(port);
+	//Chat* chat = Chat::Server(port);
+	
+	SocketManager* SM = new SocketManager([](TcpSocket* socket)
+		{
+			std::cout << std::endl << "Socket connected" << socket->getRemoteAddress().toString();
+
+			socket->Subscribe(Message, [socket](Packet packet)
+				{
+					std::string message;
+					packet >> message;
+					std::cout << std::endl << "New Message: " << message;
+
+					std::string response = "Soc el server";
+					Packet responsePacket;
+					responsePacket << response;
+					socket->Send(Message, responsePacket);
+
+				});
+
+			socket->SubscribeOnDisconnect([](TcpSocket* socket)
+				{
+					std::cout << std::endl << "Socket Disconnected" << socket->getRemoteAddress().toString();
+				});
+		});
+
+	if (SM->StartListener(port))
+	{
+		sf::IpAddress ipAddress = sf::IpAddress::getLocalAddress();
+		std::cout << "Listening on IP: " << ipAddress.toString();
+		SM->StartLoop();
+	}
 }
 
 void RunWindows()
 {
-	sf::RenderWindow windows;
-	windows.create(sf::VideoMode(800, 600), "Chat");
-	windows.setFramerateLimit(60);
+	Window window;
 
-	sf::Font font;
-	font.loadFromFile("Minecraft.ttf");
-
-	sf::Text label;
-	label.setFont(font);
-	label.setCharacterSize(16);
-	label.setFillColor(sf::Color::White);
-	label.setString("Hello World");
-	label.setOrigin(0.5, 0.5);
-	label.setPosition(windows.getSize().x / 2, windows.getSize().y / 2);
-
-	while (windows.isOpen())
+	Button* button = new Button(50, 20, "Peces/QG.png");
+	button->onClick = []()
 	{
-		windows.clear(sf::Color::Black);
-		windows.draw(label);
-		windows.display();
-	}
+		std::cout << std::endl << "Long Live the Queen";
+	};
+
+	window.AddButton(button);
+	window.RunWindowLoop();
 }
